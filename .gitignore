@@ -1,5 +1,5 @@
 #ignore hidden files
-**/.DS_Store/
+**/.DS_Store
 **/.eggs/
 
 #ignore virtual environment
