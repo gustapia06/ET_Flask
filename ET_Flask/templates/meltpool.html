@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="instructions">
+        <p><b>Melt Pool Calculator</b><br>
+        This tool will calculate the melt pool dimensions of all the cases the user uploads through a text file.
+        <br>
+        The file has to have the following format or else the software will not return an answer:
+        <ul>
+            <li>It has to be a plain text file (e.g., only .txt or .csv).</li>
+            <li>Each line has to list <b>Power,Speed,BeamSize,Absorptivity</b> in this specific order with commas separating each quantity and no spaces.</li>
+            <li>No header line, therefore first line of the file should correspond to first simulation case.</li>
+        </ul>
+        Additionally, you will have to select or provide the material properties that will be used throughout the simulations.
+        For some known materials reference, please refer to the
+        <a href="{{url_for('ET_Flask.materials')}}">Materials page</a>
+        <br><br>
+        <b>Example:</b> file <i>ET_cases.csv</i>
+        <br>
+        <b>Contents:</b>
+        <div class="example">
+            30,0.150,100,0.56<br>
+            100.5,0.5,85.75,0.25
+        </div>
+        <b>Explanation:</b> First line corresponds to the case with laser power of 30[W], 0.150[m/s] scanning speed, laser beam size (at 4 standard deviations) of 100[&mu;m], and absorptivity of 0.56.
+        <br>
+        The case for second line implies a laser power at 100.5[W], scanning speed of 0.5[m/s], laser beam size of 85.75[&mu;m], and absorptivity of 0.25.
+        </p>
+        <p>
+        The software will return a <b>csv</b> file with the corresponding calcutations for melt pool dimensions for each single case provided by the user.
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="form_menu">
+        <form name="menu", method="POST" enctype="multipart/form-data" onsubmit="return alert('This operation might take up to 5 minutes. Please leave it running until you are redirected to the Success page.')">
+            <b>File upload</b>
+            <br><br>
+            <input type="file" name="file_up" accept="text/plain,text/csv" required  />
+            <br><br>
+            <b>Material</b>
+            <br>
+            <select name="material" onchange='otherMaterial(this.value)' required>
+                <option value="" selected>Select a material</option>
+                {% for material in materials %}
+                <option value="{{ material.id }}">{{ material.name }}</option>
+                {% endfor %}
+                <option value="other">Other</option>
+            </select>
+            <br />
+            <div class="new_material" style="display:none">
+                <div class="new_p">
+                    <label class="new_l">Material name:</label>
+                    <input type="text" class="new_i alphanum" name="new_name" pattern="[ a-zA-Z0-9._-]+" />
+                </div>
+                <div class="new_p">
+                    <label class="new_l">Thermal Conductivity [W/(m&middot;K)]:</label>
+                    <input type="text" class="new_i only_num" name="new_k" pattern="^[+]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?$" />
+                </div>
+                <div class="new_p">
+                    <label class="new_l">Specific Heat Capacity [J/(kg&middot;K)]:</label>
+                    <input type="text" class="new_i only_num" name="new_cp" pattern="^[+]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?$" />
+                </div>
+                <div class="new_p">
+                    <label class="new_l">Density [kg/m<sup>3</sup>]:</label>
+                    <input type="text" class="new_i only_num" name="new_rho" pattern="^[+]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?$" />
+                </div>
+                <div class="new_p">
+                    <label class="new_l">Melting Temperature [K]:</label>
+                    <input type="text" class="new_i only_num" name="new_T" pattern="^[+]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?$" />
+                </div>
+            </div>
+            <br />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Load JS -->
+    <script src="{{ url_for('static', filename='otherMaterial.js') }}"></script>
+    <script src="{{ url_for('static', filename='checkValues.js') }}"></script>
+
+{% endblock %}

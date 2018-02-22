@@ -1,0 +1,20 @@
+#ignore hidden files
+**/.DS_Store/
+**/.eggs/
+
+#ignore virtual environment
+ET_ENV/
+
+#ignore cached files
+**/__pycache__/
+
+#ignore shared library builds
+build/
+**/*.so
+
+#ignore setup files
+ET_Flask.egg-info/
+
+#ignore logs and socket files
+**/*.log
+**/*.sock

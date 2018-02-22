@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="instructions">
+        <p><b>Materials</b><br>
+        The following materials are included in the database as of now:
+        
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Thermal Conductivity<br>[W/(m&middot;K)]</th>
+                <th>Specific Heat<br>Capacity [J/(kg&middot;K)]</th>
+                <th>Density<br>[kg/m<sup>3</sup>]</th>
+                <th>Melting Temperature<br>[K]</th>
+            </tr>
+            {% for material in materials %}
+            <tr>
+                <td align="center" class="materialTable">{{ material.id }}</td>
+                <td align="center" class="materialTable">{{ material.name }}</td>
+                <td align="center" class="materialTable">{{ material.k|safe }}</td>
+                <td align="center" class="materialTable">{{ material.cp|safe }}</td>
+                <td align="center" class="materialTable">{{ material.rho|safe }}</td>
+                <td align="center" class="materialTable">{{ material.T|safe }}</td>
+            </tr>
+            {% else %}
+            <em>Unbelievable.  No entries here so far</em>
+            {% endfor %}
+        </table>
+        </p>
+        <p>
+        To add a new material, select option <em>Other</em> in the drop-down menu of either page
+        (<a href="{{url_for('ET_Flask.meltpool')}}">Melt Pool Calculator</a> or
+        <a href="{{url_for('ET_Flask.temperatures')}}">Temperature fields Calculator</a>) and fill out the form
+        with the respective material properties.
+    </div>
+
+{% endblock %}

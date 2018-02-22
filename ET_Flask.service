@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve ET_Flask
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/ET_Flask
+Environment="PATH=/home/ubuntu/ET_Flask/ET_ENV/bin"
+ExecStart=/home/ubuntu/ET_Flask/ET_ENV/bin/gunicorn --workers 3 --log-file ET_error.log --access-logfile ET_access.log --timeout 300 --graceful-timeout 300 --bind unix:ET_Flask.sock -m 007 ET_Flask.wsgi:app
+
+[Install]
+WantedBy=multi-user.target

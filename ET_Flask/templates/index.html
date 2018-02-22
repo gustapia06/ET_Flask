@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+      <div class="instructions">
+          <p><b>Instructions:</b><br>
+          This tool can provide either of the following options for your study:
+          <ul>
+              <li>Compute melt pool dimensions</li>
+              <li>Calculate (or download) calculated temperature data</li>
+          </ul>
+          For both cases you will have to provide the following quantities:
+          <ul>
+              <li>Heat Source Parameters (applied to L-PBF Additive Manufacturing)</li>
+              <ul>
+                  <li>Laser Power [W]</li>
+                  <li>Scanning Speed [m/s]</li>
+                  <li>Laser Beam Size at 4 standard deviations [&mu;m]</li>
+              </ul>
+              <li>Material Parameters</li>
+              <ul>
+                  <li>Absorptivity [dimensionless] (between 0 and 1)</li>
+                  <li>Thermal Conductivity [W/(m&middot;K)]</li>
+                  <li>Specific Heat Capacity [J/(kg&middot;K)]</li>
+                  <li>Density [kg/m<sup>3</sup>]</li>
+                  <li>Melting Temperature [K]</li>
+              </ul>
+          </p>
+      </div>
+      
+      <hr>
+      <br>
+      <form name="menu", method="POST">
+          <b>What do you want to do?</b>
+          <br><br>
+          <input type="radio" name="main_menu" value="1" checked />Calculate melt pool dimensions
+          <input type="radio" name="main_menu" value="2" />Calculate temperature data
+          <br><br>
+          <button type="submit">Submit</button>
+      </form>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+#ignore the back-end calculation function
+# due to proprietary reasons
+EagarTsai.py
+
+#ignore database if starting a new project
+ET_Materials.db

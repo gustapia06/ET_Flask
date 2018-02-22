@@ -1,0 +1,41 @@
+body{
+    font-family: sans-serif; background: #eee;
+}
+
+input[type="radio"]{
+    margin: 0 10px 0 10px;
+}
+
+.flash{
+    background: #cee5F5; padding: 0.5em;
+    border: 1px solid #aacbe2;
+}
+
+.error{
+    background: #F0D6D6; padding: 0.5em;
+}
+
+.example{
+    font-family: "Lucida Sans Typewriter";
+    font-size: 14px
+}
+
+.new_material{
+    display: table;
+}
+
+.new_p{
+    display: table-row;
+}
+
+.new_l{
+    display: table-cell;
+}
+
+.new_i{
+    display: table-cell;
+}
+
+.materialTable{
+    padding: 0 50px;
+}

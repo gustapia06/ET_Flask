@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Eagar-Tsai model">
+        <meta name="author" content="Gustavo Tapia">
+
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        
+        <!-- get script root -->
+        <script type="text/javascript">
+            var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+        </script>
+
+        <title>Eagar-Tsai Model Solver</title>
+    </head>
+
+  <body>
+      <div class="pagetitle">
+          <h1>Success</h1>
+          <p>Your calculations have finished. You can download your file
+          <a href="{{ url_for('ET_Flask.download', filename=filename) }}">here</a>.
+          The file will be accesible at that link for 5 days.
+          <br />
+          Thanks for using this tool.
+          </p>
+      </div>
+      
+      {% for message in get_flashed_messages() %}
+      <div class=flash>{{ message|safe }}</div>
+      <br />
+      {% endfor %}
+      
+      {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+      <div>
+          Return to <a href="{{ url_for('ET_Flask.index') }}">Home</a>
+      </div>
+      
+      <hr>
+      
+      <footer>
+          <p>Prepared by Gustavo Tapia</p>
+      </footer>
+  </body>
+</html>
+
+

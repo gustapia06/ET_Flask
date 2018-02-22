@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Eagar-Tsai model">
+        <meta name="author" content="Gustavo Tapia">
+
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        
+        <!-- get script root -->
+        <script type="text/javascript">
+            var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+        </script>
+
+        <title>Eagar-Tsai Model Solver</title>
+    </head>
+
+  <body>
+      <div class="pagetitle">
+          <h1>Eagar-Tsai Model Solver</h1>
+          <p>This is a tool that will compute <b>temperature fields</b> accross a volume of a given material due to a moving Gaussian heat source.</p>
+      </div>
+      
+      {% for message in get_flashed_messages() %}
+      <div class=flash>{{ message|safe }}</div>
+      {% endfor %}
+      
+      {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+      
+      {% block content %}{% endblock %}
+      
+      <hr>
+      
+      <footer>
+          <p>Prepared by Gustavo Tapia</p>
+      </footer>
+  </body>
+</html>
+
