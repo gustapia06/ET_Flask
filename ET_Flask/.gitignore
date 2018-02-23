@@ -4,3 +4,6 @@ EagarTsai.py
 
 #ignore database if starting a new project
 ET_Materials.db
+
+#ignore tmp folder
+tmp/

@@ -32,3 +32,6 @@ sudo systemctl start ET_Flask
 sudo systemctl enable ET_Flask
 sudo systemctl restart nginx
 sudo ufw allow 'Nginx Full'
+
+#create temp folder
+mkdir ET_Flask/tmp
