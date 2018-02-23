@@ -8,9 +8,11 @@ DIR="$( cd "$(dirname "${BASH_SOURCE[@]}")" ; pwd -P )"
 cd $DIR/
 virtualenv -p python3 ET_ENV/
 
-# install all packages
+# install all packages and initialize the database
 source ET_ENV/bin/activate
 pip install --editable .
+export FLASK_APP="ET_Flask.wsgi"
+flask initdb
 deactivate
 
 #move files to systemd locations
