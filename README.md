@@ -27,7 +27,7 @@ Next, in order to install the different pieces of the tool, the **public IP** ad
 $ export IP=x.x.x.x
 ```
 
-Now, run the `install.sh` shell script that will install all needed dependencies and packages into the system. It will add a virtual environment through `virtualenv`, and create all needed files and libraries. If the installer does not work, please execute step by step the commands within that shell file.
+Now, run the `sudo install.sh` shell script that will install all needed dependencies and packages into the system. It will add a virtual environment through `virtualenv`, and create all needed files and libraries. If the installer does not work, please execute step by step the commands within that shell file.
 
 The tool should then be available on any web browser at the public IP of the server.
 

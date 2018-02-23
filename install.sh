@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #download virtualenv
+pip install --upgrade pip
 sudo pip3 install virtualenv
 
 #make sure to place the enviroment directory in the same folder
